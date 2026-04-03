@@ -1,0 +1,23 @@
+{
+    "name": "D-Dev.CurrencySystem.Extensions",
+    "rootNamespace": "",
+    "references": [
+        "GUID:80b1b562c598898438372094811cc127",
+        "GUID:0ce9d49e8045908448905aba67046949",
+        "GUID:cb1a05c32f5d5744bb2273b8970ae954",
+        "GUID:ea2556969bd3c4d43a76b6d609c961b3",
+        "GUID:6d0199508f23afb4692c5fcd34c5ce08",
+        "GUID:ba7d088f93a8e1649b9edc0955fab802",
+        "GUID:1d36efb7d24523b41b598aa02555bb7a",
+        "GUID:028ca8031f0df62439d7b8d0736b95b7"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
