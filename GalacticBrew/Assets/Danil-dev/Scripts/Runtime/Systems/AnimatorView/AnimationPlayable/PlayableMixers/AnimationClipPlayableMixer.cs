@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -8,10 +9,30 @@ namespace D_Dev.AnimatorView.AnimationPlayableHandler
 {
     public class AnimationClipPlayableMixer : BaseAnimationPlayableMixer
     {
+        #region Structs
+
+        private struct LocalBlendOperation
+        {
+            public int Id;
+            public int Layer;
+            public float Duration;
+            public float Delay;
+            public float Elapsed;
+            public float DelayElapsed;
+            public float FromWeight;
+            public float ToWeight;
+            public bool IsComplete;
+            public AnimationLayerMixerPlayable Mixer;
+            public Action OnComplete;
+        }
+
+        #endregion
+
         #region Fields
 
         [PropertyOrder(-1)]
         [SerializeField] private bool _connectToSeperateMixer;
+        [SerializeField] private bool _useBlendManager;
         [PropertySpace(10)]
         [SerializeField] private bool _hasStartAnimations;
         [ShowIf(nameof(_hasStartAnimations))]
@@ -24,6 +45,10 @@ namespace D_Dev.AnimatorView.AnimationPlayableHandler
         private Dictionary<int, Stack<AnimationPlayablePairConfig>> _animationStack = new();
         private Dictionary<int, int> _blendInIds = new();
         private Dictionary<int, int> _blendOutIds = new();
+
+        private readonly List<LocalBlendOperation> _localOperations = new(16);
+        private readonly List<int> _localToRemove = new(8);
+        private int _localNextId;
 
         #endregion
 
@@ -52,6 +77,54 @@ namespace D_Dev.AnimatorView.AnimationPlayableHandler
             if (_hasStartAnimations && _onStartAnimations.Length > 0)
                 foreach (var animation in _onStartAnimations)
                     Play(animation);
+        }
+
+        private void Update()
+        {
+            if (_useBlendManager)
+                return;
+
+            if (_localOperations.Count == 0)
+                return;
+
+            _localToRemove.Clear();
+            float dt = Time.deltaTime;
+
+            for (int i = 0; i < _localOperations.Count; i++)
+            {
+                var op = _localOperations[i];
+
+                if (op.IsComplete)
+                {
+                    _localToRemove.Add(i);
+                    continue;
+                }
+
+                if (op.DelayElapsed < op.Delay)
+                {
+                    op.DelayElapsed += dt;
+                    _localOperations[i] = op;
+                    continue;
+                }
+
+                op.Elapsed += dt;
+                float t = Mathf.Clamp01(op.Elapsed / op.Duration);
+                float weight = Mathf.Lerp(op.FromWeight, op.ToWeight, t);
+
+                if (op.Mixer.IsValid())
+                    op.Mixer.SetInputWeight(op.Layer, weight);
+
+                if (t >= 1f)
+                {
+                    op.IsComplete = true;
+                    op.OnComplete?.Invoke();
+                }
+
+                _localOperations[i] = op;
+            }
+
+            for (int i = _localToRemove.Count - 1; i >= 0; i--)
+                _localOperations.RemoveAt(_localToRemove[i]);
         }
 
         private void OnDisable()
@@ -187,14 +260,22 @@ namespace D_Dev.AnimatorView.AnimationPlayableHandler
 
             CancelBlendIn(layer);
 
-            if (AnimationPlayableBlendManager.Instance == null)
+            if (_useBlendManager)
             {
-                Debug.LogError("[AnimationPlayableBlendManager] = null");
-                return;
-            }
+                if (AnimationPlayableBlendManager.Instance == null)
+                {
+                    Debug.LogError("[AnimationPlayableBlendManager] = null");
+                    return;
+                }
 
-            _blendInIds[layer] = AnimationPlayableBlendManager.Instance.Schedule(
-                _targetLayerMixerPlayable, layer, current, config.TargetWeight, crossFade);
+                _blendInIds[layer] = AnimationPlayableBlendManager.Instance.Schedule(
+                    _targetLayerMixerPlayable, layer, current, config.TargetWeight, crossFade);
+            }
+            else
+            {
+                _blendInIds[layer] = ScheduleLocal(
+                    _targetLayerMixerPlayable, layer, current, config.TargetWeight, crossFade);
+            }
         }
 
         private void ScheduleBlendOut(AnimationPlayableClipConfig config, AnimationClipPlayable playable)
@@ -209,22 +290,33 @@ namespace D_Dev.AnimatorView.AnimationPlayableHandler
 
             CancelBlendOut(layer);
 
-            if (AnimationPlayableBlendManager.Instance == null)
+            Action onComplete = () =>
             {
-                Debug.LogError("[AnimationPlayableBlendManager] = null");
-                return;
-            }
-
-            _blendOutIds[layer] = AnimationPlayableBlendManager.Instance.Schedule(
-                _targetLayerMixerPlayable, layer, config.TargetWeight, 0f, crossFade, delay,
-                onComplete: () =>
+                if (!config.IsLooping)
                 {
-                    if (!config.IsLooping)
-                    {
-                        RestorePreviousLayerState(layer);
-                        DisconnectOneShot(config);
-                    }
-                });
+                    RestorePreviousLayerState(layer);
+                    DisconnectOneShot(config);
+                }
+            };
+
+            if (_useBlendManager)
+            {
+                if (AnimationPlayableBlendManager.Instance == null)
+                {
+                    Debug.LogError("[AnimationPlayableBlendManager] = null");
+                    return;
+                }
+
+                _blendOutIds[layer] = AnimationPlayableBlendManager.Instance.Schedule(
+                    _targetLayerMixerPlayable, layer, config.TargetWeight, 0f, crossFade, delay,
+                    onComplete: onComplete);
+            }
+            else
+            {
+                _blendOutIds[layer] = ScheduleLocal(
+                    _targetLayerMixerPlayable, layer, config.TargetWeight, 0f, crossFade, delay,
+                    onComplete: onComplete);
+            }
         }
 
         private void CancelBlendIn(int layer)
@@ -232,13 +324,21 @@ namespace D_Dev.AnimatorView.AnimationPlayableHandler
             if (!_blendInIds.TryGetValue(layer, out int id))
                 return;
 
-            if (AnimationPlayableBlendManager.Instance == null)
+            if (_useBlendManager)
             {
-                Debug.LogError("[AnimationPlayableBlendManager] = null");
-                return;
+                if (AnimationPlayableBlendManager.Instance == null)
+                {
+                    Debug.LogError("[AnimationPlayableBlendManager] = null");
+                    return;
+                }
+
+                AnimationPlayableBlendManager.Instance.Cancel(id);
+            }
+            else
+            {
+                CancelLocal(id);
             }
 
-            AnimationPlayableBlendManager.Instance.Cancel(id);
             _blendInIds.Remove(layer);
         }
 
@@ -247,13 +347,21 @@ namespace D_Dev.AnimatorView.AnimationPlayableHandler
             if (!_blendOutIds.TryGetValue(layer, out int id))
                 return;
 
-            if (AnimationPlayableBlendManager.Instance == null)
+            if (_useBlendManager)
             {
-                Debug.LogError("[AnimationPlayableBlendManager] = null");
-                return;
+                if (AnimationPlayableBlendManager.Instance == null)
+                {
+                    Debug.LogError("[AnimationPlayableBlendManager] = null");
+                    return;
+                }
+
+                AnimationPlayableBlendManager.Instance.Cancel(id);
+            }
+            else
+            {
+                CancelLocal(id);
             }
 
-            AnimationPlayableBlendManager.Instance.Cancel(id);
             _blendOutIds.Remove(layer);
         }
 
@@ -265,17 +373,30 @@ namespace D_Dev.AnimatorView.AnimationPlayableHandler
 
         private void CancelAllBlends()
         {
-            if (AnimationPlayableBlendManager.Instance == null)
+            if (_useBlendManager)
             {
-                Debug.LogError("[AnimationPlayableBlendManager] = null");
-                return;
+                if (AnimationPlayableBlendManager.Instance == null)
+                {
+                    Debug.LogError("[AnimationPlayableBlendManager] = null");
+                    return;
+                }
+
+                foreach (var id in _blendInIds.Values)
+                    AnimationPlayableBlendManager.Instance.Cancel(id);
+
+                foreach (var id in _blendOutIds.Values)
+                    AnimationPlayableBlendManager.Instance.Cancel(id);
             }
+            else
+            {
+                foreach (var id in _blendInIds.Values)
+                    CancelLocal(id);
 
-            foreach (var id in _blendInIds.Values)
-                AnimationPlayableBlendManager.Instance.Cancel(id);
+                foreach (var id in _blendOutIds.Values)
+                    CancelLocal(id);
 
-            foreach (var id in _blendOutIds.Values)
-                AnimationPlayableBlendManager.Instance.Cancel(id);
+                _localOperations.Clear();
+            }
 
             _blendInIds.Clear();
             _blendOutIds.Clear();
@@ -335,6 +456,41 @@ namespace D_Dev.AnimatorView.AnimationPlayableHandler
             config.UseAutoFadeTimeBasedOnClipLength
                 ? Mathf.Clamp(clip.length * 0.1f, 0.1f, clip.length * 0.5f)
                 : config.CrossFadeTime;
+
+        private int ScheduleLocal(AnimationLayerMixerPlayable mixer, int layer,
+            float fromWeight, float toWeight, float duration,
+            float delay = 0f, Action onComplete = null)
+        {
+            _localOperations.Add(new LocalBlendOperation
+            {
+                Id = _localNextId++,
+                Layer = layer,
+                Duration = Mathf.Max(duration, 0.001f),
+                Delay = delay,
+                Elapsed = 0f,
+                DelayElapsed = 0f,
+                FromWeight = fromWeight,
+                ToWeight = toWeight,
+                IsComplete = false,
+                Mixer = mixer,
+                OnComplete = onComplete
+            });
+            return _localNextId - 1;
+        }
+
+        private void CancelLocal(int id)
+        {
+            for (int i = 0; i < _localOperations.Count; i++)
+            {
+                if (_localOperations[i].Id != id)
+                    continue;
+
+                var op = _localOperations[i];
+                op.IsComplete = true;
+                _localOperations[i] = op;
+                break;
+            }
+        }
 
         #endregion
     }
