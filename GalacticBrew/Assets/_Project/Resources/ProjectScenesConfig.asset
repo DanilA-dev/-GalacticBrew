@@ -12,5 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c52f0bf328f744929f703d89378f3833, type: 3}
   m_Name: ProjectScenesConfig
   m_EditorClassIdentifier: 
-  _sceneInfosPath: 
-  _scenes: []
+  _sceneInfosPath: Assets/_Project/ScriptableObjects/Infos/SceneInfos
+  _scenes:
+  - {fileID: 11400000, guid: 3c2794887c7483547bef92dd6a7d3183, type: 2}
+  - {fileID: 11400000, guid: cb28055295264a942b33ea90c46936db, type: 2}
+  - {fileID: 11400000, guid: 3cb5a0182dd82734db1b01e240979530, type: 2}
+  - {fileID: 11400000, guid: 44b694a77bc74f54986b83bd6870934d, type: 2}

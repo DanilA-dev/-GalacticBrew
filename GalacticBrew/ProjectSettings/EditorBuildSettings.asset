@@ -8,6 +8,15 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Project/Scenes/MainScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/_Project/Scenes/BootScene.unity
+    guid: da71f9d59c3b21e4aa48701e12e82d08
+  - enabled: 1
+    path: Assets/_Project/Scenes/GlobalSystemsScene.unity
+    guid: b457301b6a85cd147847fd1e46d3d090
+  - enabled: 1
+    path: Assets/_Project/Scenes/UIScene.unity
+    guid: 8911cb2e88fe80e4ab898aac19bfc9bb
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
