@@ -1,0 +1,234 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8220981346325438382
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3655977139138819303}
+  - component: {fileID: 4166991484053254742}
+  - component: {fileID: 209357124095407046}
+  - component: {fileID: 7795437106912340910}
+  - component: {fileID: 1655707916273744329}
+  - component: {fileID: 4781949049761039213}
+  m_Layer: 0
+  m_Name: CashCurrencyItem_Prefab
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3655977139138819303
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8220981346325438382}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &4166991484053254742
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8220981346325438382}
+  m_Mesh: {fileID: -6100047549122247039, guid: c75cbaaeb42319341b291f474b31fa89, type: 3}
+--- !u!23 &209357124095407046
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8220981346325438382}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 9dc053a0afa5137488db3857a46b1c1a, type: 2}
+  - {fileID: 2100000, guid: 0740977cd0615fc41a3e88a926a2ba9a, type: 2}
+  - {fileID: 2100000, guid: 8a53b7414a87e9e488cc91c60d395248, type: 2}
+  - {fileID: 2100000, guid: 922f6cdcc5d7a5643ba8e4254f3e7010, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &7795437106912340910
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8220981346325438382}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.14105499, y: 0.026472101, z: 0.06627598}
+  m_Center: {x: 0, y: 0.0132360505, z: 0}
+--- !u!114 &1655707916273744329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8220981346325438382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53127fb289144fc0bf501988f58623b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _collisionDimension: 0
+  _colliderChecker:
+    _collisionDimension: 0
+    _checkLayer: 0
+    _checkLayerMask:
+      serializedVersion: 2
+      m_Bits: 0
+    _checkTag: 1
+    _checkTags:
+    - {fileID: 11400000, guid: f9ee7521267de1a42a6b32976397a6bb, type: 2}
+    _ignoreTrigger: 1
+    _ignoreColliders: 0
+    _ignoredColliders: []
+    _ignoredColliders2D: []
+    _ignoreLayer: 0
+    _ignoreLayerMask:
+      serializedVersion: 2
+      m_Bits: 0
+    _ignoreTag: 0
+    _ignoreTags: []
+    _debugColliders: 0
+  _checkEnter: 1
+  _checkExit: 0
+  _onEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  _onExit:
+    m_PersistentCalls:
+      m_Calls: []
+  _onEnter2D:
+    m_PersistentCalls:
+      m_Calls: []
+  _onExit2D:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &4781949049761039213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8220981346325438382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f44397fa10aa4b9c8f95cb2f3454640b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _currencyInfo:
+    rid: 4627978807160078338
+  _amount:
+    rid: 4627978807160078336
+  _setOnEnable: 0
+  _startCurrencySetAction: 0
+  _useFlyingAnimation: 0
+  _flyingAnimationEventName:
+    rid: 4627978807160078337
+  _from:
+    rid: -2
+  _to:
+    rid: -2
+  OnDepositSuccess:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDepositFailed:
+    m_PersistentCalls:
+      m_Calls: []
+  OnWithdrawSuccess:
+    m_PersistentCalls:
+      m_Calls: []
+  OnWithdrawFailed:
+    m_PersistentCalls:
+      m_Calls: []
+  OnSetSuccess:
+    m_PersistentCalls:
+      m_Calls: []
+  OnSetFailed:
+    m_PersistentCalls:
+      m_Calls: []
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
+    - rid: 4627978807160078336
+      type: {class: IntConstantValue, ns: D_Dev.PolymorphicValueSystem, asm: D-Dev.PolymorphicValueSystem}
+      data:
+        _showEvent: 0
+        OnValueChanged:
+          m_PersistentCalls:
+            m_Calls: []
+        _value: 1
+    - rid: 4627978807160078337
+      type: {class: StringConstantValue, ns: D_Dev.PolymorphicValueSystem, asm: D-Dev.PolymorphicValueSystem}
+      data:
+        _showEvent: 0
+        OnValueChanged:
+          m_PersistentCalls:
+            m_Calls: []
+        _value: 
+    - rid: 4627978807160078338
+      type: {class: CurrencyInfoConstantValue, ns: D_Dev.CurrencySystem.Extensions, asm: D-Dev.CurrencySystem.Extensions}
+      data:
+        _showEvent: 0
+        OnValueChanged:
+          m_PersistentCalls:
+            m_Calls: []
+        _value: {fileID: 11400000, guid: dddec1b4f61b90443b9116ce0d5c6666, type: 2}

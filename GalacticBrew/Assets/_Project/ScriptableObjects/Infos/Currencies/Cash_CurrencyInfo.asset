@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 094d8551874a4f6495121ef0b4eb6694, type: 3}
-  m_Name: Money_CurrencyInfo
+  m_Name: Cash_CurrencyInfo
   m_EditorClassIdentifier: 
   _currency:
-    _name: Money
+    _name: Cash
     _value: 0
     _defaultValue: 100
     _hasMaxValue: 0
