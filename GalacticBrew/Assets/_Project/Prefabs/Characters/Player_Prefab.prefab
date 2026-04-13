@@ -1155,7 +1155,49 @@ MonoBehaviour:
   _debugStateChange: 0
   _startState:
     rid: 4627978783098667324
-  _stateEvents: []
+  _stateEvents:
+  - <State>k__BackingField:
+      rid: 4627978869158707203
+    OnStateEnter:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 11400000, guid: d6beac38fbce65644ad96fe7bfc05aab, type: 2}
+          m_TargetAssemblyTypeName: D_Dev.ScriptableVaiables.BoolScriptableVariable,
+            D-Dev.ScriptableVariables
+          m_MethodName: ResetValue
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    OnStateExit:
+      m_PersistentCalls:
+        m_Calls: []
+  - <State>k__BackingField:
+      rid: 4627978869158707204
+    OnStateEnter:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 11400000, guid: d6beac38fbce65644ad96fe7bfc05aab, type: 2}
+          m_TargetAssemblyTypeName: D_Dev.ScriptableVaiables.BoolScriptableVariable,
+            D-Dev.ScriptableVariables
+          m_MethodName: set_Value
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+    OnStateExit:
+      m_PersistentCalls:
+        m_Calls: []
   OnAnyStateEnter:
     m_PersistentCalls:
       m_Calls:
@@ -1194,6 +1236,22 @@ MonoBehaviour:
           m_PersistentCalls:
             m_Calls: []
         _variable: {fileID: 11400000, guid: 97e58dd645f68604d85e3b2071b8b4ad, type: 2}
+    - rid: 4627978869158707203
+      type: {class: StringScriptableVariableValue, ns: D_Dev.PolymorphicValueSystem, asm: D-Dev.PolymorphicValueSystem}
+      data:
+        _showEvent: 0
+        OnValueChanged:
+          m_PersistentCalls:
+            m_Calls: []
+        _variable: {fileID: 11400000, guid: 97e58dd645f68604d85e3b2071b8b4ad, type: 2}
+    - rid: 4627978869158707204
+      type: {class: StringScriptableVariableValue, ns: D_Dev.PolymorphicValueSystem, asm: D-Dev.PolymorphicValueSystem}
+      data:
+        _showEvent: 0
+        OnValueChanged:
+          m_PersistentCalls:
+            m_Calls: []
+        _variable: {fileID: 11400000, guid: 943844bbe2db4d84bbe1ff63d5cfe444, type: 2}
 --- !u!1 &5867794207003438162
 GameObject:
   m_ObjectHideFlags: 0

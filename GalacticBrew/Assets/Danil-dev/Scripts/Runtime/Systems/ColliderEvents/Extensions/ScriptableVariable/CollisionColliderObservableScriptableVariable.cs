@@ -3,6 +3,6 @@ using UnityEngine;
 
 namespace D_Dev.ColliderEvents.Extensions.ScriptableVariables
 {
-    [CreateAssetMenu(menuName = "D-Dev/ColliderEvents/CollisionColliderObservableVariable")]
+    [CreateAssetMenu(menuName = "D-Dev/Variables/ColliderEvents/CollisionColliderObservableVariable")]
     public class CollisionColliderObservableScriptableVariable : BaseScriptableVariable<CollisionColliderObservable> {}
 }
