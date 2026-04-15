@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using D_Dev.ColliderEvents;
 using D_Dev.CoroutineManagerSystem;
@@ -39,6 +40,8 @@ namespace Game.Core.Trigger
         [FoldoutGroup("Events")]
         public UnityEvent<float> OnDrainProgress;
         [FoldoutGroup("Events")]
+        public UnityEvent<int> OnRemainingCost;
+        [FoldoutGroup("Events")]
         public UnityEvent OnDrainComplete;
         [FoldoutGroup("Events")]
         public UnityEvent OnDrainFail;
@@ -78,6 +81,11 @@ namespace Game.Core.Trigger
             _trigger?.OnExit.AddListener(OnTriggerExitHandler);
         }
 
+        private void Start()
+        {
+            OnRemainingCost?.Invoke(TargetCost);
+        }
+
         private void OnDestroy()
         {
             _trigger?.OnEnter.RemoveListener(OnTriggerEnterHandler);
@@ -99,11 +107,6 @@ namespace Game.Core.Trigger
             _isComplete = false;
         }
 
-        /// <summary>
-        /// Pauses the drain loop. The active coroutine keeps running but stops ticking
-        /// until <see cref="Resume"/> is called. Use this from outside (e.g. when the
-        /// player is just running through the trigger instead of standing on it).
-        /// </summary>
         public void Pause() => _isPaused = true;
 
         public void Resume() => _isPaused = false;
@@ -215,6 +218,7 @@ namespace Game.Core.Trigger
                 }
 
                 int remainingCost = TargetCost - _currentCurrencyAdded;
+                OnRemainingCost?.Invoke(remainingCost);
                 int payAmount = Mathf.Min(_currentPayRate, remainingCost);
                 if (payAmount <= 0)
                     continue;
@@ -234,6 +238,7 @@ namespace Game.Core.Trigger
 
             _isDraining = false;
             _isComplete = true;
+            OnRemainingCost?.Invoke(0);
             OnDrainComplete?.Invoke();
         }
 
@@ -249,6 +254,7 @@ namespace Game.Core.Trigger
                 yield break;
 
             OnRefunded?.Invoke(refundAmount);
+            OnRemainingCost?.Invoke(TargetCost);
             _currencyEntitySpawner?.SpawnCurrencies(refundAmount);
             _currentCurrencyAdded = 0;
         }
