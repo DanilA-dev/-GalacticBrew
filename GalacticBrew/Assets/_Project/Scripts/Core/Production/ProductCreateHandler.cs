@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using D_Dev.CoroutineManagerSystem;
 using D_Dev.EntitySpawner;
@@ -16,13 +15,9 @@ namespace Game.Core.Production
 
         [Title("Production")]
         [SerializeField] private EntitySpawnSettings _spawnSettings;
+        [SerializeField] private ProductContainer _outputContainer;
         [SerializeReference] private PolymorphicValue<float> _productTimeToMakeValue = new FloatConstantValue();
         [SerializeReference] private PolymorphicValue<int> _productMakeCount = new IntConstantValue();
-        [SerializeReference] private PolymorphicValue<int> _productLimit = new IntConstantValue();
-
-        [Title("Spawn Points")]
-        [SerializeField] private Transform[] _productSpawnPoints;
-        [SerializeField] private Vector3 _stackOffset = new Vector3(0f, 0.2f, 0f);
 
         [Title("Settings")]
         [SerializeField] private bool _createOnInit;
@@ -38,9 +33,8 @@ namespace Game.Core.Production
         [FoldoutGroup("Events")]
         public UnityEvent<float> OnProductCreateProgress;
         [FoldoutGroup("Events")]
-        public UnityEvent OnProductLimitReached;
+        public UnityEvent OnOutputFull;
 
-        private readonly List<GameObject> _createdProducts = new List<GameObject>();
         private Coroutine _productionCoroutine;
         private bool _isRunning;
         private bool _isPaused;
@@ -50,13 +44,9 @@ namespace Game.Core.Production
 
         #region Properties
 
-        public int CreatedCount => _createdProducts.Count;
-        public int ProductLimit => _productLimit?.Value ?? 0;
-        
         public bool IsRunning => _isRunning;
-        
         public bool IsPaused => _isPaused;
-        public bool IsLimitReached => _createdProducts.Count >= ProductLimit;
+        public bool IsOutputFull => _outputContainer.IsStackFull;
 
         #endregion
 
@@ -84,8 +74,8 @@ namespace Game.Core.Production
 
             await _spawnSettings.Init();
             _initialized = true;
-            
-            if(_createOnInit)
+
+            if (_createOnInit)
                 StartProduction();
         }
 
@@ -94,9 +84,9 @@ namespace Game.Core.Production
             if (_isRunning && !_isPaused)
                 return;
 
-            if (IsLimitReached)
+            if (IsOutputFull)
             {
-                OnProductLimitReached?.Invoke();
+                OnOutputFull?.Invoke();
                 return;
             }
 
@@ -136,11 +126,6 @@ namespace Game.Core.Production
                 return;
 
             _isPaused = false;
-        }
-
-        public void ClearProducts()
-        {
-            _createdProducts.Clear();
         }
 
         #endregion
@@ -192,9 +177,9 @@ namespace Game.Core.Production
                 int batchCount = Mathf.Max(1, _productMakeCount?.Value ?? 1);
                 for (int i = 0; i < batchCount; i++)
                 {
-                    if (IsLimitReached)
+                    if (IsOutputFull)
                     {
-                        OnProductLimitReached?.Invoke();
+                        OnOutputFull?.Invoke();
                         StopInternal();
                         OnProductionStopped?.Invoke();
                         yield break;
@@ -211,28 +196,11 @@ namespace Game.Core.Production
             if (product == null)
                 return;
 
-            PlaceProduct(product);
-            _createdProducts.Add(product);
+            bool accepted = await _outputContainer.PutIn(product);
+            if (!accepted)
+                return;
+
             OnProductCreated?.Invoke(product);
-        }
-
-        private void PlaceProduct(GameObject product)
-        {
-            if (_productSpawnPoints == null || _productSpawnPoints.Length == 0)
-                return;
-
-            int count = _createdProducts.Count;
-            int index = count % _productSpawnPoints.Length;
-            int stackLevel = count / _productSpawnPoints.Length;
-            var point = _productSpawnPoints[index];
-
-            if (point == null)
-                return;
-
-            var t = product.transform;
-            t.SetParent(point, worldPositionStays: false);
-            t.localPosition = _stackOffset * stackLevel;
-            t.localRotation = Quaternion.identity;
         }
 
         #endregion

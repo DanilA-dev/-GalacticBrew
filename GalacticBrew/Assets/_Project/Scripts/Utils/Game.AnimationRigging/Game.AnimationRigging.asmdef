@@ -1,0 +1,17 @@
+{
+    "name": "Game.AnimationRigging",
+    "rootNamespace": "",
+    "references": [
+        "GUID:afd511e9df38c4a4a9b7414410d3bc6a",
+        "GUID:7f7d1af65c2641843945d409d28f2e20"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

@@ -244,7 +244,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1538368802025577368}
-  - {fileID: 9142884130211227131}
+  - {fileID: 5379638890792786871}
   - {fileID: 7315883118700362069}
   - {fileID: 2626290468707368999}
   m_Father: {fileID: 0}
@@ -300,23 +300,11 @@ MonoBehaviour:
     _poolDefaultCapacity: 0
     _poolMaxSize: 0
     _globalPool: {fileID: 0}
+  _outputContainer: {fileID: 585072658584550110}
   _productTimeToMakeValue:
     rid: 4627978920953643267
   _productMakeCount:
     rid: 4627978920953643268
-  _productLimit:
-    rid: 4627978920953643269
-  _productSpawnPoints:
-  - {fileID: 5624010241509474179}
-  - {fileID: 1799804847484170738}
-  - {fileID: 2442734610872855936}
-  - {fileID: 610427368926518295}
-  - {fileID: 8005774088844016334}
-  - {fileID: 4950966083238206393}
-  - {fileID: 122788141479284470}
-  - {fileID: 2309053914516415940}
-  - {fileID: 4314700466632912971}
-  _stackOffset: {x: 0, y: 0.1, z: 0}
   _createOnInit: 1
   OnProductionStarted:
     m_PersistentCalls:
@@ -357,7 +345,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  OnProductLimitReached:
+  OnOutputFull:
     m_PersistentCalls:
       m_Calls: []
   references:
@@ -406,15 +394,6 @@ MonoBehaviour:
           m_PersistentCalls:
             m_Calls: []
         _variableID: {fileID: 11400000, guid: ee65e206cacc8214e85109ae6c119f35, type: 2}
-        _runtimeEntityVariablesContainer: {fileID: 5939700712249737935}
-    - rid: 4627978920953643269
-      type: {class: IntRuntimeVariableValue, ns: D_Dev.RuntimeEntityVariables.Extensions, asm: D-Dev.RuntimeEntityVariablesContainer.Extensions}
-      data:
-        _showEvent: 0
-        OnValueChanged:
-          m_PersistentCalls:
-            m_Calls: []
-        _variableID: {fileID: 11400000, guid: 7cee77cfc12d9e64ab0fe207bfda0237, type: 2}
         _runtimeEntityVariablesContainer: {fileID: 5939700712249737935}
 --- !u!1 &3620710460732398024
 GameObject:
@@ -505,6 +484,241 @@ MonoBehaviour:
         _punch: {x: 1, y: 1, z: 1}
         _vibratoPunch: 10
         _elasticityPunch: 1
+--- !u!1 &3711682723580119848
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5379638890792786871}
+  - component: {fileID: 3922625258296803533}
+  - component: {fileID: 4281075503690220164}
+  - component: {fileID: 585072658584550110}
+  - component: {fileID: 4742483103304066905}
+  - component: {fileID: 5117273674859938446}
+  m_Layer: 0
+  m_Name: ProductContainer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5379638890792786871
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3711682723580119848}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.41, y: 0, z: -0.169}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 3179815073697552614}
+  - {fileID: 9142884130211227131}
+  m_Father: {fileID: 1462765749256576392}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &3922625258296803533
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3711682723580119848}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.3
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4281075503690220164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3711682723580119848}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53127fb289144fc0bf501988f58623b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _collisionDimension: 0
+  _colliderChecker:
+    _collisionDimension: 0
+    _checkLayer: 0
+    _checkLayerMask:
+      serializedVersion: 2
+      m_Bits: 0
+    _checkTag: 1
+    _checkTags:
+    - {fileID: 11400000, guid: 0d8be1bdb7a8324418a9757e6681878e, type: 2}
+    _ignoreTrigger: 0
+    _ignoreColliders: 1
+    _ignoredColliders:
+    - {fileID: 3922625258296803533}
+    - {fileID: 2584540326113430540}
+    _ignoredColliders2D: []
+    _ignoreLayer: 0
+    _ignoreLayerMask:
+      serializedVersion: 2
+      m_Bits: 0
+    _ignoreTag: 0
+    _ignoreTags: []
+    _debugColliders: 0
+  _checkEnter: 1
+  _checkExit: 0
+  _onEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  _onExit:
+    m_PersistentCalls:
+      m_Calls: []
+  _onEnter2D:
+    m_PersistentCalls:
+      m_Calls: []
+  _onExit2D:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &585072658584550110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3711682723580119848}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcf120c815ed47dca1700f66abc5eb92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _stack: {fileID: 900532150969543789}
+  _productTriggerCollider: {fileID: 4281075503690220164}
+  _mode: 2
+  _transferSettings: {fileID: 0}
+  _maxTransferPerEnter: 999
+  OnProductEntered:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4742483103304066905}
+        m_TargetAssemblyTypeName: D_Dev.TimerSystem.TickedTimerComponent, D-Dev.TimerSystem.Extensions
+        m_MethodName: StartTimer
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnProductExited:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2679276803403584001}
+        m_TargetAssemblyTypeName: Game.Core.Production.ProductCreateHandler, Game.Core
+        m_MethodName: StartProduction
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnFull:
+    m_PersistentCalls:
+      m_Calls: []
+  OnEmpty:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &4742483103304066905
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3711682723580119848}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d29228d979f4777a3a9d04bf99f4f4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _invokeOnStart: 0
+  _repeat: 0
+  _timeValue:
+    rid: 4627978941979951681
+  OnTimerStart:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3922625258296803533}
+        m_TargetAssemblyTypeName: UnityEngine.SphereCollider, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnTimerUpdate:
+    m_PersistentCalls:
+      m_Calls: []
+  OnTimerEnd:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3922625258296803533}
+        m_TargetAssemblyTypeName: UnityEngine.SphereCollider, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+  references:
+    version: 2
+    RefIds:
+    - rid: 4627978941979951681
+      type: {class: FloatConstantValue, ns: D_Dev.PolymorphicValueSystem, asm: D-Dev.PolymorphicValueSystem}
+      data:
+        _showEvent: 0
+        OnValueChanged:
+          m_PersistentCalls:
+            m_Calls: []
+        _value: 0.1
+--- !u!114 &5117273674859938446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3711682723580119848}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cdc5300222145c393d90bbbb6ad5657, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _tags:
+  - {fileID: 11400000, guid: 0d8be1bdb7a8324418a9757e6681878e, type: 2}
 --- !u!1 &3760286741602960388
 GameObject:
   m_ObjectHideFlags: 0
@@ -635,7 +849,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9142884130211227131}
   m_Layer: 0
-  m_Name: SpawnPoints
+  m_Name: ProductPoints
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -649,8 +863,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4737762344798080693}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.505, y: 0.05, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.095, y: 0.05, z: 0.169}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -663,8 +877,95 @@ Transform:
   - {fileID: 122788141479284470}
   - {fileID: 2309053914516415940}
   - {fileID: 4314700466632912971}
-  m_Father: {fileID: 1462765749256576392}
+  m_Father: {fileID: 5379638890792786871}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5256101192727101389
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3179815073697552614}
+  - component: {fileID: 900532150969543789}
+  m_Layer: 0
+  m_Name: ProductStack
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3179815073697552614
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5256101192727101389}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5379638890792786871}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &900532150969543789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5256101192727101389}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afc7ea9737418594b9d93a02f70e17b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _positionPoints:
+    rid: 4627978941979951388
+  _stackOffset:
+    rid: 4627978941979951389
+  _limit:
+    rid: 4627978941979951391
+  references:
+    version: 2
+    RefIds:
+    - rid: 4627978941979951388
+      type: {class: TransformArrayConstantValue, ns: D_Dev.PolymorphicValueSystem, asm: D-Dev.PolymorphicValueSystem}
+      data:
+        _showEvent: 0
+        OnValueChanged:
+          m_PersistentCalls:
+            m_Calls: []
+        _value:
+        - {fileID: 5624010241509474179}
+        - {fileID: 1799804847484170738}
+        - {fileID: 2442734610872855936}
+        - {fileID: 610427368926518295}
+        - {fileID: 8005774088844016334}
+        - {fileID: 4950966083238206393}
+        - {fileID: 122788141479284470}
+        - {fileID: 2309053914516415940}
+        - {fileID: 4314700466632912971}
+    - rid: 4627978941979951389
+      type: {class: Vector3ConstantValue, ns: D_Dev.PolymorphicValueSystem, asm: D-Dev.PolymorphicValueSystem}
+      data:
+        _showEvent: 0
+        OnValueChanged:
+          m_PersistentCalls:
+            m_Calls: []
+        _value: {x: 0, y: 0.1, z: 0}
+    - rid: 4627978941979951391
+      type: {class: IntRuntimeVariableValue, ns: D_Dev.RuntimeEntityVariables.Extensions, asm: D-Dev.RuntimeEntityVariablesContainer.Extensions}
+      data:
+        _showEvent: 0
+        OnValueChanged:
+          m_PersistentCalls:
+            m_Calls: []
+        _variableID: {fileID: 11400000, guid: 7cee77cfc12d9e64ab0fe207bfda0237, type: 2}
+        _runtimeEntityVariablesContainer: {fileID: 5939700712249737935}
 --- !u!1 &5504317253472382468
 GameObject:
   m_ObjectHideFlags: 0

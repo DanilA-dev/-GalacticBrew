@@ -86,7 +86,7 @@ MonoBehaviour:
         OnValueChanged:
           m_PersistentCalls:
             m_Calls: []
-        _value: 10
+        _value: 9
     - rid: 4627978920953643256
       type: {class: EntityInfoEntityVariable, ns: D_Dev.Entity.Extensions, asm: D-Dev.EntityInfo.Extensions}
       data:
