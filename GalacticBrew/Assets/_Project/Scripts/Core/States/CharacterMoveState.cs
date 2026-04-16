@@ -14,6 +14,7 @@ namespace  _Project.Scripts.Core.States
 
         [SerializeReference] private BasePositionSettings _movementDirection;
         [SerializeField] private BaseMovementController _movementController;
+        [SerializeField] private bool _isTargetPosition;
         [SerializeField] private bool _rotateToDirection;
         [Space]
         [SerializeReference] private PolymorphicValue<float> _accelerationSpeed;
@@ -50,7 +51,10 @@ namespace  _Project.Scripts.Core.States
 
         private void UpdateMovement()
         {
-            var direction = _movementDirection.GetPosition();
+            var value = _movementDirection.GetPosition();
+            var direction = _isTargetPosition
+                ? (value - _movementController.transform.position).normalized
+                : value;
 
             if (_rotateToDirection)
                 _rotationHandler.FaceMovementDirection(direction, _rotationSpeed.Value);

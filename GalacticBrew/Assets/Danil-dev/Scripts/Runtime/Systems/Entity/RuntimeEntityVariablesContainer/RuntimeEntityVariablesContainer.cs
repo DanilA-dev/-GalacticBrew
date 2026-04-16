@@ -1,8 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using D_Dev.EntityVariable;
 using D_Dev.ScriptableVaiables;
+using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace D_Dev.RuntimeEntityVariables
 {
@@ -10,24 +11,32 @@ namespace D_Dev.RuntimeEntityVariables
     {
         #region Fields
 
-        [SerializeField] private bool _initLocalVariablesOnStart;
+        [SerializeField] private bool _initLocalVariablesOnAwake;
         [SerializeReference] private List<BaseEntityVariable> _variables = new();
 
         private Dictionary<StringScriptableVariable, BaseEntityVariable> _variableMap = new();
         
-        public event Action OnInitialized;
+        [FoldoutGroup("Events")]
+        public UnityEvent OnInitialized;
             
+        #endregion
+
+        #region Properties
+
+        public bool IsInitialized { get; private set; }
+
         #endregion
 
         #region Monobehaviour
 
-        private void Start()
+        private void Awake()
         {
-            if (_initLocalVariablesOnStart)
+            if (_initLocalVariablesOnAwake)
             {
                 foreach (var runtimeVariables in _variables)
                     _variableMap.TryAdd(runtimeVariables.VariableID, runtimeVariables);
                 
+                IsInitialized = true;
                 OnInitialized?.Invoke();
             }
         }
@@ -38,21 +47,23 @@ namespace D_Dev.RuntimeEntityVariables
 
         public void Init(List<BaseEntityVariable> variablesFromInfo)
         {
-            if(variablesFromInfo == null || variablesFromInfo.Count == 0)
-                return;
-
             foreach (var runtimeVariables in _variables)
                 _variableMap.TryAdd(runtimeVariables.VariableID, runtimeVariables);
-            
-            foreach (var variable in variablesFromInfo)
+
+            if (variablesFromInfo != null && variablesFromInfo.Count > 0)
             {
-                if(variable == null)
-                    continue;
-                
-                var clonedVar = variable.Clone();
-                _variables.Add(clonedVar);
-                _variableMap.TryAdd(variable.VariableID, clonedVar);
+                foreach (var variable in variablesFromInfo)
+                {
+                    if (variable == null)
+                        continue;
+
+                    var clonedVar = variable.Clone();
+                    _variables.Add(clonedVar);
+                    _variableMap.TryAdd(variable.VariableID, clonedVar);
+                }
             }
+
+            IsInitialized = true;
             OnInitialized?.Invoke();
         }
 

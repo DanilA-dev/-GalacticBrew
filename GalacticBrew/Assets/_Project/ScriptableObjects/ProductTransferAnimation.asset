@@ -18,4 +18,4 @@ MonoBehaviour:
   _jumpPower: 1
   _jumpNum: 1
   _rotateEase: 6
-  _betweenItemsInterval: 0.01
+  _betweenItemsInterval: 0
