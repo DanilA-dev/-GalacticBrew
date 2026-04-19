@@ -130,6 +130,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2952195434538597089}
+  - component: {fileID: -5721758926343240767}
+  - component: {fileID: 1184592659202739227}
   m_Layer: 0
   m_Name: CoffeeProduct_Prefab
   m_TagString: Untagged
@@ -154,6 +156,47 @@ Transform:
   - {fileID: 8035084270016311696}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-5721758926343240767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6023353158723373380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f309d9303df42b2be257b3ca525ba91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _initLocalVariablesOnAwake: 0
+  _variables: []
+  OnInitialized:
+    m_PersistentCalls:
+      m_Calls: []
+  references:
+    version: 2
+    RefIds: []
+--- !u!114 &1184592659202739227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6023353158723373380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08f3b09f67e24624950b1af7939f13cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnEntityGet:
+    m_PersistentCalls:
+      m_Calls: []
+  OnEntityRelease:
+    m_PersistentCalls:
+      m_Calls: []
+  OnEntityDestroy:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &6715125089325280635
 GameObject:
   m_ObjectHideFlags: 0

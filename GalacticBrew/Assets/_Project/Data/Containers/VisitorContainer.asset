@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f40aedf0eb7ab2d449c3efa5d800b3bb, type: 3}
+  m_Name: VisitorContainer
+  m_EditorClassIdentifier: 
+  _visitors:
+  - _data:
+      rid: 4627979004420817066
+    _createOnStart: 0
+    _amount:
+      rid: 4627979004420817063
+    _setActiveOnStart: 1
+    _setParent: 0
+    _parentTransform: {fileID: 0}
+    _positionSettings:
+      rid: 4627979004420817064
+    _positionOffset: {x: 0, y: 0, z: 0}
+    _rotationSettings:
+      rid: 4627979004420817065
+    _usePool: 1
+    _applyPosConfigOnGet: 0
+    _poolCollectionCheck: 0
+    _prewarm: 0
+    _prewarmAmount: 0
+    _poolDefaultCapacity: 0
+    _poolMaxSize: 0
+    _globalPool: {fileID: 11400000, guid: 0509aa08a604ade438a0678ba893dc33, type: 2}
+  references:
+    version: 2
+    RefIds:
+    - rid: 4627979004420817063
+      type: {class: IntConstantValue, ns: D_Dev.PolymorphicValueSystem, asm: D-Dev.PolymorphicValueSystem}
+      data:
+        _showEvent: 0
+        OnValueChanged:
+          m_PersistentCalls:
+            m_Calls: []
+        _value: 1
+    - rid: 4627979004420817064
+      type: {class: BasePositionSettings, ns: D_Dev.PositionRotationConfig, asm: D-Dev.PositionRotationSettings}
+      data:
+        _useRandomSphere: 0
+        _radius: 0
+        _axis: 7
+    - rid: 4627979004420817065
+      type: {class: BaseRotationSettings, ns: D_Dev.PositionRotationConfig.RotationSettings, asm: D-Dev.PositionRotationSettings}
+      data: 
+    - rid: 4627979004420817066
+      type: {class: EntityInfoConstantValue, ns: D_Dev.Entity.Extensions, asm: D-Dev.EntityInfo.Extensions}
+      data:
+        _showEvent: 0
+        OnValueChanged:
+          m_PersistentCalls:
+            m_Calls: []
+        _value: {fileID: 11400000, guid: 0eee9ef724c228f4fa3aaae095c2b71a, type: 2}

@@ -1,5 +1,244 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2033869842293396153
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2064445668720090789}
+  - component: {fileID: 343033026073442883}
+  - component: {fileID: 7948656830450185372}
+  m_Layer: 0
+  m_Name: OnVisitorPayAnimation
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2064445668720090789
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2033869842293396153}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -960, y: -540, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2321648536374518896}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &343033026073442883
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2033869842293396153}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9d082de978744419745cc7e1e6a0c18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _flyingEntityEventName:
+    rid: 4627979004420817639
+  _flyingEntityAnimationConfig:
+    _entitySpawnSettings:
+      _data:
+        rid: 4627979004420817640
+      _createOnStart: 0
+      _amount:
+        rid: 4627979004420817636
+      _setActiveOnStart: 1
+      _setParent: 0
+      _parentTransform: {fileID: 0}
+      _positionSettings:
+        rid: 4627979004420817637
+      _positionOffset: {x: 0, y: 0, z: 0}
+      _rotationSettings:
+        rid: 4627979004420817638
+      _usePool: 1
+      _applyPosConfigOnGet: 1
+      _poolCollectionCheck: 0
+      _prewarm: 0
+      _prewarmAmount: 0
+      _poolDefaultCapacity: 0
+      _poolMaxSize: 0
+      _globalPool: {fileID: 11400000, guid: 7f96e4a59846ca8468f443888f5765a0, type: 2}
+    _maxAmount: 25
+    _localScale: {x: 0.5, y: 0.5, z: 0.5}
+    _fromOffset: {x: 0, y: 0}
+    _toOffset: {x: 0, y: 0}
+    _canvas:
+      rid: 4627979004420817642
+    _fromOffsetWorld: {x: 0, y: 0, z: 0}
+    _toOffsetWorld: {x: 0, y: 0, z: 0}
+    _jumpPower: 2
+    _numJumps: 1
+    _delayBetweenSpawn: 0.1
+    _moveTime: 0.5
+    _ease: 2
+    _ignoreTimeScale: 1
+    OnSingleAnimationEnd:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 7948656830450185372}
+          m_TargetAssemblyTypeName: D_Dev.TweenAnimations.TweenPlayer, D-Dev.TweenAnimations
+          m_MethodName: Play
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    OnAllAnimationEnd:
+      m_PersistentCalls:
+        m_Calls: []
+  references:
+    version: 2
+    RefIds:
+    - rid: 4627979004420817636
+      type: {class: IntConstantValue, ns: D_Dev.PolymorphicValueSystem, asm: D-Dev.PolymorphicValueSystem}
+      data:
+        _showEvent: 0
+        OnValueChanged:
+          m_PersistentCalls:
+            m_Calls: []
+        _value: 0
+    - rid: 4627979004420817637
+      type: {class: BasePositionSettings, ns: D_Dev.PositionRotationConfig, asm: D-Dev.PositionRotationSettings}
+      data:
+        _useRandomSphere: 0
+        _radius: 0
+        _axis: 7
+    - rid: 4627979004420817638
+      type: {class: BaseRotationSettings, ns: D_Dev.PositionRotationConfig.RotationSettings, asm: D-Dev.PositionRotationSettings}
+      data: 
+    - rid: 4627979004420817639
+      type: {class: StringScriptableVariableValue, ns: D_Dev.PolymorphicValueSystem, asm: D-Dev.PolymorphicValueSystem}
+      data:
+        _showEvent: 0
+        OnValueChanged:
+          m_PersistentCalls:
+            m_Calls: []
+        _variable: {fileID: 11400000, guid: 9536b906ec80c50488ee037e46e64d5d, type: 2}
+    - rid: 4627979004420817640
+      type: {class: EntityInfoConstantValue, ns: D_Dev.Entity.Extensions, asm: D-Dev.EntityInfo.Extensions}
+      data:
+        _showEvent: 0
+        OnValueChanged:
+          m_PersistentCalls:
+            m_Calls: []
+        _value: {fileID: 11400000, guid: fea04177c91488a4d9767114026ff766, type: 2}
+    - rid: 4627979004420817642
+      type: {class: CanvasConstantValue, ns: D_Dev.PolymorphicValueSystem, asm: D-Dev.PolymorphicValueSystem}
+      data:
+        _showEvent: 0
+        OnValueChanged:
+          m_PersistentCalls:
+            m_Calls: []
+        _value: {fileID: 256234398131644649}
+--- !u!114 &7948656830450185372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2033869842293396153}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e9ae1703778c0448ae8615b8c94d963, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _tweenPlayer:
+    _playMode: 0
+    _ignoreTimeScale: 0
+    _tweens:
+    - rid: 4627979004420817643
+  _playOnEnable: 0
+  _playMode: 0
+  _startIndex: 0
+  OnStart:
+    m_PersistentCalls:
+      m_Calls: []
+  OnComplete:
+    m_PersistentCalls:
+      m_Calls: []
+  references:
+    version: 2
+    RefIds:
+    - rid: 4627979004420817643
+      type: {class: ScaleAnimationTween, ns: D_Dev.TweenAnimations.Types, asm: D-Dev.TweenAnimations}
+      data:
+        _duration: 0.25
+        _delay: 0
+        _ease: 0
+        _ignoreTimeScale: 0
+        _loops: 0
+        _loopType: 0
+        OnStart:
+          m_PersistentCalls:
+            m_Calls: []
+        OnComplete:
+          m_PersistentCalls:
+            m_Calls: []
+        _scaleObjects:
+        - {fileID: 7184918708322127346}
+        _motionType: 2
+        _useInitialScaleAsStart: 0
+        _endScale: {x: 0, y: 0, z: 0}
+        _startScale: {x: 0, y: 0, z: 0}
+        _shakeStrength: {x: 1, y: 1, z: 1}
+        _vibratoShake: 10
+        _randomnessShake: 90
+        _fadeOutShake: 1
+        _punch: {x: 0.1, y: 0.1, z: 0.1}
+        _vibratoPunch: 10
+        _elasticityPunch: 1
+--- !u!1 &4194327842792048425
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2321648536374518896}
+  m_Layer: 5
+  m_Name: CurrenciesFlyingAnimations
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2321648536374518896
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4194327842792048425}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2064445668720090789}
+  m_Father: {fileID: 6801190052931942167}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &6801190052931942172
 GameObject:
   m_ObjectHideFlags: 0
@@ -31,6 +270,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 2321648536374518896}
   - {fileID: 7184918708322127346}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -265,8 +505,37 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1665588037951298929, guid: a9409443d01c4f04d8ee9701a0315cbf, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6052153808272978527}
   m_SourcePrefab: {fileID: 100100000, guid: a9409443d01c4f04d8ee9701a0315cbf, type: 3}
+--- !u!1 &1533483724982291865 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1665588037951298929, guid: a9409443d01c4f04d8ee9701a0315cbf, type: 3}
+  m_PrefabInstance: {fileID: 168141906358014184}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6052153808272978527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1533483724982291865}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93d91bcdbf394471a72e0ac95d7ca543, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _variable: {fileID: 11400000, guid: 9a8bb915b17e6a443869d56d1637bed5, type: 2}
+  _value: {fileID: 1535941087368707751}
+  _setOnAwake: 1
+  _setOnStart: 0
+--- !u!224 &1535941087368707751 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 1658906223188799055, guid: a9409443d01c4f04d8ee9701a0315cbf, type: 3}
+  m_PrefabInstance: {fileID: 168141906358014184}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &7184918708322127346 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7052823191446281498, guid: a9409443d01c4f04d8ee9701a0315cbf, type: 3}

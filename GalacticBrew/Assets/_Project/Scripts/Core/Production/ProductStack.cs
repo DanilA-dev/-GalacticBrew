@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using D_Dev.EntityPool;
 using D_Dev.PolymorphicValueSystem;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -27,6 +28,7 @@ namespace Game.Core.Production
         public int FreeSlots => HasLimit ? Mathf.Max(0, Limit - _products.Count - _reservedCount) : int.MaxValue;
         public bool IsFull => HasLimit && (_products.Count + _reservedCount) >= Limit;
         public bool IsEmpty => _products.Count == 0;
+        public IReadOnlyList<GameObject> Products => _products;
 
         #endregion
 
@@ -68,6 +70,11 @@ namespace Game.Core.Production
                 _reservedCount--;
         }
 
+        public bool Remove(GameObject product)
+        {
+            return product != null && _products.Remove(product);
+        }
+
         public bool TryPopTop(out GameObject product)
         {
             product = null;
@@ -89,6 +96,27 @@ namespace Game.Core.Production
         {
             _products.Clear();
             _reservedCount = 0;
+        }
+
+        public void ClearAndReleaseProducts()
+        {
+            _reservedCount = 0;
+
+            if (_products.Count == 0)
+                return;
+
+            for (int i = _products.Count - 1; i >= 0; i--)
+            {
+                var product = _products[i];
+                if (product == null)
+                    continue;
+
+                product.transform.SetParent(null);
+                if (product.TryGetComponent(out PoolableObject poolableObject))
+                    poolableObject.Release();
+            }
+
+            _products.Clear();
         }
 
         #endregion

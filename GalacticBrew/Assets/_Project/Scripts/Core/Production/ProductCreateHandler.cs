@@ -1,4 +1,5 @@
 using System.Collections;
+using _Project.Scripts.Core.OrderSystem;
 using Cysharp.Threading.Tasks;
 using D_Dev.CoroutineManagerSystem;
 using D_Dev.EntitySpawner;
@@ -13,14 +14,18 @@ namespace Game.Core.Production
     {
         #region Fields
 
-        [Title("Production")]
-        [SerializeField] private EntitySpawnSettings _spawnSettings;
-        [SerializeField] private ProductContainer _outputContainer;
+        [Title("Order Container")] 
+        [SerializeField] private OrdersContainer _ordersContainer;
+
+        [Title("Variables")] 
+        [SerializeReference] private PolymorphicValue<OrderInfo> _orderData = new OrderConstantValue();
         [SerializeReference] private PolymorphicValue<float> _productTimeToMakeValue = new FloatConstantValue();
         [SerializeReference] private PolymorphicValue<int> _productMakeCount = new IntConstantValue();
 
-        [Title("Settings")]
+        [Title("Production Settings")]
         [SerializeField] private bool _createOnInit;
+        [SerializeField] private ProductContainer _outputContainer;
+        [SerializeField] private EntitySpawnSettings _spawnSettings;
 
         [FoldoutGroup("Events")]
         public UnityEvent OnProductionStarted;
@@ -60,6 +65,7 @@ namespace Game.Core.Production
         private void OnDestroy()
         {
             StopInternal();
+            _ordersContainer?.Remove(_orderData.Value);
             _spawnSettings?.DisposePool();
         }
 
@@ -75,6 +81,8 @@ namespace Game.Core.Production
             await _spawnSettings.Init();
             _initialized = true;
 
+            _ordersContainer?.Add(_orderData.Value);
+            
             if (_createOnInit)
                 StartProduction();
         }

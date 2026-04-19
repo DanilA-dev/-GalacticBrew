@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82e74d80d33248ad9b3c00ab2a51d7a7, type: 3}
+  m_Name: CoffeeProduct_EntityInfo
+  m_EditorClassIdentifier: 
+  _id: e13126c8-ee16-4c21-81f7-b9ae695cb9df
+  _entityPrefab:
+    _makeAddressable: 0
+    _asset: {fileID: 6023353158723373380, guid: 095e374bac8d9cf4f96d9bf1f85ef11b, type: 3}
+    _assetReference:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
+  _variables:
+  - rid: 4627978986799759766
+  references:
+    version: 2
+    RefIds:
+    - rid: 4627978986799759766
+      type: {class: OrderEntityVariable, ns: _Project.Scripts.Core.OrderSystem, asm: Game.Core}
+      data:
+        _variableID: {fileID: 11400000, guid: 79974098d8c4e29449423b99d99c9e83, type: 2}
+        _value:
+          rid: 4627978986799759767
+    - rid: 4627978986799759767
+      type: {class: OrderConstantValue, ns: _Project.Scripts.Core.OrderSystem, asm: Game.Core}
+      data:
+        _showEvent: 0
+        OnValueChanged:
+          m_PersistentCalls:
+            m_Calls: []
+        _value: {fileID: 11400000, guid: 8158a10b474e50c42beee725c814d1ab, type: 2}

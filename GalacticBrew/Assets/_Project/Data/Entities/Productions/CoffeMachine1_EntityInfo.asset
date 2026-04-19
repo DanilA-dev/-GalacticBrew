@@ -1,0 +1,109 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82e74d80d33248ad9b3c00ab2a51d7a7, type: 3}
+  m_Name: CoffeMachine1_EntityInfo
+  m_EditorClassIdentifier: 
+  _id: 9b02b18b-047b-4411-a8da-974bb7ec59b0
+  _entityPrefab:
+    _makeAddressable: 0
+    _asset: {fileID: 3603261824904602653, guid: b3ce9a5ed675aa943980293908bc4d65, type: 3}
+    _assetReference:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
+  _variables:
+  - rid: 4627978920953643215
+  - rid: 4627978920953643209
+  - rid: 4627978920953643211
+  - rid: 4627978920953643246
+  - rid: 4627978920953643256
+  - rid: 4627978986799759510
+  references:
+    version: 2
+    RefIds:
+    - rid: 4627978920953643209
+      type: {class: FloatEntityVariable, ns: D_Dev.EntityVariable.Types, asm: D-Dev.EntityVariable}
+      data:
+        _variableID: {fileID: 11400000, guid: 094ed0a317175144e8728097e1e35f46, type: 2}
+        _value:
+          rid: 4627978920953643210
+    - rid: 4627978920953643210
+      type: {class: FloatConstantValue, ns: D_Dev.PolymorphicValueSystem, asm: D-Dev.PolymorphicValueSystem}
+      data:
+        _showEvent: 0
+        OnValueChanged:
+          m_PersistentCalls:
+            m_Calls: []
+        _value: 5
+    - rid: 4627978920953643211
+      type: {class: IntEntityVariable, ns: D_Dev.EntityVariable.Types, asm: D-Dev.EntityVariable}
+      data:
+        _variableID: {fileID: 11400000, guid: ee65e206cacc8214e85109ae6c119f35, type: 2}
+        _value:
+          rid: 4627978920953643212
+    - rid: 4627978920953643212
+      type: {class: IntConstantValue, ns: D_Dev.PolymorphicValueSystem, asm: D-Dev.PolymorphicValueSystem}
+      data:
+        _showEvent: 0
+        OnValueChanged:
+          m_PersistentCalls:
+            m_Calls: []
+        _value: 1
+    - rid: 4627978920953643215
+      type: {class: IntEntityVariable, ns: D_Dev.EntityVariable.Types, asm: D-Dev.EntityVariable}
+      data:
+        _variableID: {fileID: 11400000, guid: 474c503436f2ffa47819ba9f0d22cf71, type: 2}
+        _value:
+          rid: 4627978920953643216
+    - rid: 4627978920953643216
+      type: {class: IntConstantValue, ns: D_Dev.PolymorphicValueSystem, asm: D-Dev.PolymorphicValueSystem}
+      data:
+        _showEvent: 0
+        OnValueChanged:
+          m_PersistentCalls:
+            m_Calls: []
+        _value: 50
+    - rid: 4627978920953643246
+      type: {class: IntEntityVariable, ns: D_Dev.EntityVariable.Types, asm: D-Dev.EntityVariable}
+      data:
+        _variableID: {fileID: 11400000, guid: 7cee77cfc12d9e64ab0fe207bfda0237, type: 2}
+        _value:
+          rid: 4627978920953643247
+    - rid: 4627978920953643247
+      type: {class: IntConstantValue, ns: D_Dev.PolymorphicValueSystem, asm: D-Dev.PolymorphicValueSystem}
+      data:
+        _showEvent: 0
+        OnValueChanged:
+          m_PersistentCalls:
+            m_Calls: []
+        _value: 9
+    - rid: 4627978920953643256
+      type: {class: EntityInfoEntityVariable, ns: D_Dev.Entity.Extensions, asm: D-Dev.EntityInfo.Extensions}
+      data:
+        _variableID: {fileID: 11400000, guid: ce66105b2081d8a4a8bfab067e1d7574, type: 2}
+        _value: {fileID: 11400000, guid: 2032221bb30ed594ca64fbcae61401b6, type: 2}
+    - rid: 4627978986799759510
+      type: {class: OrderEntityVariable, ns: _Project.Scripts.Core.OrderSystem, asm: Game.Core}
+      data:
+        _variableID: {fileID: 11400000, guid: 79974098d8c4e29449423b99d99c9e83, type: 2}
+        _value:
+          rid: 4627978986799759747
+    - rid: 4627978986799759747
+      type: {class: OrderConstantValue, ns: _Project.Scripts.Core.OrderSystem, asm: Game.Core}
+      data:
+        _showEvent: 0
+        OnValueChanged:
+          m_PersistentCalls:
+            m_Calls: []
+        _value: {fileID: 11400000, guid: 8158a10b474e50c42beee725c814d1ab, type: 2}

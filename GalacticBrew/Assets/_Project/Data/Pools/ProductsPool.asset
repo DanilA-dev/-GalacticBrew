@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0ff5c3bd1b34e75a3229d821010b55c, type: 3}
+  m_Name: ProductsPool
+  m_EditorClassIdentifier: 
+  _poolConfigs:
+  - EntityData: {fileID: 11400000, guid: 2032221bb30ed594ca64fbcae61401b6, type: 2}
+    MaxSize: 25
+    DefaultCapacity: 10
+    Prewarm: 1
+    PrewarmAmount: 10

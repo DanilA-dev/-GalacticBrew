@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82e74d80d33248ad9b3c00ab2a51d7a7, type: 3}
+  m_Name: UIFlyingCashCurrency_EntityInfo
+  m_EditorClassIdentifier: 
+  _id: b83c9deb-728f-4da6-b447-fd3140602ccf
+  _entityPrefab:
+    _makeAddressable: 0
+    _asset: {fileID: 4616581312486971050, guid: aaf340e1f9dd1ac4a891f0f644a56fea, type: 3}
+    _assetReference:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
+  _variables: []
+  references:
+    version: 2
+    RefIds: []
